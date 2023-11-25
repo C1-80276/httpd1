@@ -13,7 +13,7 @@ pipeline {
         }
         stage ('push docker image') {
             steps {
-                sh '/usr/bin/docker image push chiraag77/chiraag77:forAws'
+                sh '/usr/bin/docker image push chiraag77/chiraag_repo:forAws'
             }
         }
         stage ('reload docker service') {
