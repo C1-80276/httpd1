@@ -3,22 +3,22 @@ pipeline {
     stages {
         stage ('build docker image') {
             steps {
-                sh '/usr/bin/docker image build -t chiraag77/chiraag_repo:forAws .'
+                sh 'docker image build -t chiraag77/chiraag_repo:forAws .'
             }
         }
         stage ('docker login') {
             steps {
-                sh 'echo dckr_pat_PaLl5Fxzkq8et76Hg8CaWv9__SQ | /usr/bin/docker login -u chiraag77 --password-stdin'
+                sh 'echo dckr_pat_PaLl5Fxzkq8et76Hg8CaWv9__SQ | docker login -u chiraag77 --password-stdin'
             }
         }
         stage ('push docker image') {
             steps {
-                sh '/usr/bin/docker image push chiraag77/chiraag77:forAws'
+                sh 'docker image push chiraag77/chiraag77:forAws'
             }
         }
         stage ('reload docker service') {
             steps {
-                sh '/usr/bin/docker service update --image chiraag77/chiraag_repo:forAws --force awsService'
+                sh 'docker service update --image chiraag77/chiraag_repo:forAws --force awsService'
             }
         }
 
